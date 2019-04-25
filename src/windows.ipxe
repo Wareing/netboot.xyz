@@ -29,10 +29,10 @@ echo
 echo -n URL: ${} && read win_base_url
 echo
 echo netboot.xyz will attempt to load the following files:
-echo ${win_base_url}/${win_arch}/bootmgr
-echo ${win_base_url}/${win_arch}/boot/bcd
-echo ${win_base_url}/${win_arch}/boot/boot.sdi
-echo ${win_base_url}/${win_arch}/sources/boot.wim
+echo ${win_base_url}/bootmgr
+echo ${win_base_url}/boot/bcd
+echo ${win_base_url}/boot/boot.sdi
+echo ${win_base_url}/sources/boot.wim
 echo
 prompt Press any key to return to Windows Menu...
 goto windows
@@ -42,10 +42,10 @@ isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
 
 :boot
 kernel http://${boot_domain}/wimboot
-initrd ${win_base_url}/${win_arch}/bootmgr bootmgr
-initrd ${win_base_url}/${win_arch}/boot/bcd bcd
-initrd ${win_base_url}/${win_arch}/boot/boot.sdi boot.sdi
-initrd ${win_base_url}/${win_arch}/sources/boot.wim boot.wim
+initrd ${win_base_url}/bootmgr bootmgr
+initrd ${win_base_url}/boot/bcd bcd
+initrd ${win_base_url}/boot/boot.sdi boot.sdi
+initrd ${win_base_url}/sources/boot.wim boot.wim
 md5sum wimboot
 iseq ${img_sigs_enabled} true && goto verify_sigs || goto skip_sigs
 :verify_sigs
